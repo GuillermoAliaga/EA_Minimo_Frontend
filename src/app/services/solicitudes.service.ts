@@ -11,11 +11,14 @@ export class SolicitudesService {
 private http = inject(HttpClient);
 private apiUrl = `${environment.apiUrl}/solicitudes`;
 
-getSolicitudes(params: PageParams = {}, showDeleted: boolean = false): Observable<PaginatedResponse<ISolicitud>> {
+getSolicitudes(
+    params: PageParams & { sortBy?: string; sortOrder?: string; status?: string; type?: string } = {}, 
+    showDeleted: boolean = false
+  ): Observable<PaginatedResponse<ISolicitud>> {
     const queryParams = {
       ...params,
       search: params.search?.trim(),
-      showDeleted: showDeleted 
+      showDeleted: showDeleted
     };
 
     return this.http.get<PaginatedResponse<ISolicitud>>(this.apiUrl, {

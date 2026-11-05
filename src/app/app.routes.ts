@@ -11,6 +11,8 @@ import { Register } from './components/register/register';
 import { UserForm } from './components/user-form/user-form';
 import { UsersList } from './components/users-list/users-list';
 import { activityPublisherGuard, adminGuard, authGuard, guestGuard } from './guards/auth.guard';
+import { SolicitudesList } from './components/solicitud-list/solicitud-list';
+import { SolicitudesForm } from './components/solicitud-form/solicitud-form';
 
 export const routes: Routes = [
   // Las pantallas de administración requieren una cuenta ADMIN.
@@ -68,6 +70,16 @@ export const routes: Routes = [
     component: ReportForm,
     canActivate: [authGuard, adminGuard],
     title: 'Revisar reporte',
+  },
+  {
+path: 'solicitudes',
+component: SolicitudesList,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'solicitudes/new',
+    component: SolicitudesForm,
+    canActivate: [authGuard]
   },
   { path: 'chat', component: Chat, canActivate: [authGuard], title: 'Chat' },
   { path: '**', redirectTo: '' },
