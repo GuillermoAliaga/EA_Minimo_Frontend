@@ -24,4 +24,9 @@ export type {
   ReportTargetType,
   ReportUpdate,
 } from './report.model';
+export type {
+  ISolicitud,
+  SolicitudesType,
+  SolicitudesStatus,
+} from './solicitudes.model';
 export type { PageParams, PaginatedResponse } from './paginated.model';
